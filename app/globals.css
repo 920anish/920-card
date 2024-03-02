@@ -17,6 +17,7 @@
 }
 
 body {
+  transition: color 0.1s ease-in-out, background 0.1s ease-in-out; /* Add easing function */
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -30,4 +31,22 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+@keyframes pulse-custom {
+  10% { transform: scaleY(0.3); }
+  30% { transform: scaleY(1); }
+  60% { transform: scaleY(0.5); }
+  80% { transform: scaleY(0.75); }
+  100% { transform: scaleY(0.5); }
+}
+.line-1  , .line-2 , .line-3{
+  animation: pulse-custom 2.2s infinite alternate;
+}
+
+.line-2 {
+  animation-delay: -2.2s;
+}
+.line-3 {
+  animation-delay: -3.7s;
 }
