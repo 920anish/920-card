@@ -2,18 +2,15 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import fetch from 'node-fetch';
 import { NextResponse } from 'next/server';
 
-// Defining the handler function to handle API requests
 export async function GET(req: NextApiRequest, res: NextApiResponse) {
   try {
-    // Check if Spotify credentials are available
     if (!process.env.SPOTIFY_CLIENT_ID || !process.env.SPOTIFY_CLIENT_SECRET || !process.env.SPOTIFY_REFRESH_TOKEN) {
       throw new Error('Missing Spotify credentials');
     }
 
-    // Encode Spotify client ID and secret for authorization
     const credentials = Buffer.from(`${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`).toString('base64');
 
-    // Function to fetch access token from Spotify API
+
     const getAccessToken = async () => {
       const params = new URLSearchParams();
       params.append('grant_type', 'refresh_token');
@@ -31,10 +28,8 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
       return response.json();
     };
 
-    // Get access token
-    const { access_token } = await getAccessToken() as { access_token: string }; // Type assertion
+    const { access_token } = await getAccessToken() as { access_token: string }; 
 
-    // Fetch currently playing track from Spotify API
     const response = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
       headers: {
         Authorization: `Bearer ${access_token}`,
@@ -43,16 +38,13 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
 
     console.log('Response Status:', response.status);
 
-    // Check if response is OK
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
-    // Parse response data
     const rawData = await response.text();
     const data = rawData ? JSON.parse(rawData) : null;
 
-    // Check if data is empty
     if (!data) {
       console.error('Unexpected end of JSON input');
       const nowPlayingData = { isOnline: false };
