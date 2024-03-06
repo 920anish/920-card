@@ -33,22 +33,22 @@ const SpotifyContainer = () => {
 
         if (!data) {
           console.error('Unexpected end of JSON input');
-          setNowPlayingData({ ...nowPlayingData, isOnline: false });
+          setNowPlayingData(prevData => ({ ...prevData, isOnline: false }));
         } else {
           setNowPlayingData(data);
         }
       } catch (error:any) {
         console.error('Error fetching now playing data:', error.message);
-        setNowPlayingData({ ...nowPlayingData, isOnline: false });
+        setNowPlayingData(prevData => ({ ...prevData, isOnline: false }));
       }
     };
 
-    const interval = setInterval(fetchData, 10000);
+    const interval = setInterval(fetchData, 3000);
 
     fetchData();
 
     return () => clearInterval(interval);
-  }, [nowPlayingData]);
+  }, []);
 
   return (
     <div className="mt-8 text-center">
