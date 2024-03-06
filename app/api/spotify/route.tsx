@@ -1,5 +1,9 @@
 import { NextResponse } from 'next/server';
 
+export const config = {
+  runtime: "edge",
+};
+
 export async function GET() {
   try {
     if (!process.env.SPOTIFY_CLIENT_ID || !process.env.SPOTIFY_CLIENT_SECRET || !process.env.SPOTIFY_REFRESH_TOKEN) {
@@ -7,7 +11,6 @@ export async function GET() {
     }
 
     const credentials = Buffer.from(`${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`).toString('base64');
-
 
     const getAccessToken = async () => {
       const params = new URLSearchParams();
