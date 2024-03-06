@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import PlayingAnimation from './assets/animation';
 import SpotifyLogo from "./assets/logo";
+import Image from 'next/image';
 
 interface NowPlayingData {
   isOnline: boolean;
@@ -47,7 +48,7 @@ const SpotifyContainer = () => {
     fetchData();
 
     return () => clearInterval(interval);
-  }, []);
+  }, [nowPlayingData]);
 
   return (
     <div className="mt-8 text-center">
@@ -63,7 +64,7 @@ const SpotifyContainer = () => {
         {nowPlayingData.isOnline && <PlayingAnimation />}
         {nowPlayingData.isOnline ? (
           <div className="max-w-sm mx-auto m-4">
-            <img src={nowPlayingData.image} height={100} width={100} alt="Album Art" className="rounded-lg mb-4 mx-auto" />
+           <Image src={nowPlayingData.image} height={100} width={100} alt="Album Art" className="rounded-lg mb-4 mx-auto" />
             <div className="text-center mb-4">
               <h2 className="text-sm font-semibold">{nowPlayingData.song}</h2>
               <p className="text-gray-600">
@@ -74,7 +75,7 @@ const SpotifyContainer = () => {
             </div>
           </div>
         ) : (
-          <p className="text-gray-600 m-4">Listenin' to the voices!</p>
+          <p className="text-gray-600 m-4">Listenin&apos; to the voices!</p>
         )}
       </div>
     </div>
