@@ -1,7 +1,5 @@
 import { NextResponse } from 'next/server';
 
-export const runtime = "edge";
-
 export async function GET() {
   try {
     if (!process.env.SPOTIFY_CLIENT_ID || !process.env.SPOTIFY_CLIENT_SECRET || !process.env.SPOTIFY_REFRESH_TOKEN) {
