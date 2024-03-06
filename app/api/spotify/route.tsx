@@ -1,4 +1,3 @@
-import fetch from 'node-fetch';
 import { NextResponse } from 'next/server';
 
 export async function GET() {
