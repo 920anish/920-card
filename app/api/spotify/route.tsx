@@ -1,8 +1,7 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import fetch from 'node-fetch';
 import { NextResponse } from 'next/server';
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+export async function GET() {
   try {
     if (!process.env.SPOTIFY_CLIENT_ID || !process.env.SPOTIFY_CLIENT_SECRET || !process.env.SPOTIFY_REFRESH_TOKEN) {
       throw new Error('Missing Spotify credentials');
