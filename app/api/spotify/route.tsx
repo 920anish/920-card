@@ -25,7 +25,7 @@ export async function GET() {
       return response.json();
     };
 
-    const { access_token } = await getAccessToken() as { access_token: string };
+    const { access_token } = await getAccessToken() as { access_token: string }; 
 
     const response = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
       headers: {
@@ -45,7 +45,7 @@ export async function GET() {
     if (!data) {
       console.error('Unexpected end of JSON input');
       const nowPlayingData = { isOnline: false };
-      return NextResponse.json(nowPlayingData, { status: 200, headers: { 'Cache-Control': 'no-store' } });
+      return NextResponse.json(nowPlayingData, { status: 200 });
     } else {
       const nowPlayingData = {
         isOnline: data.is_playing,
@@ -55,11 +55,11 @@ export async function GET() {
         image: data.item.album.images.length > 0 ? data.item.album.images[0].url : null,
       };
 
-      return NextResponse.json(nowPlayingData, { status: 200, headers: { 'Cache-Control': 'no-store' } });
+      return NextResponse.json(nowPlayingData, { status: 200 });
     }
   } catch (error: any) {
     console.error('Error fetching now playing data:', error.message);
     const nowPlayingData = { isOnline: false };
-    return NextResponse.json(nowPlayingData, { status: 200, headers: { 'Cache-Control': 'no-store' } });
+    return NextResponse.json(nowPlayingData, { status: 200 });
   }
 }
