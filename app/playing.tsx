@@ -51,10 +51,10 @@ const SpotifyContainer = () => {
   }, []);
 
   return (
-    <div className="mt-8 text-center">
+    <div className="text-center">
       <div className="max-w-sm mx-auto flex flex-col items-center justify-center mb-4">
         <SpotifyLogo />
-        <div className="flex justify-center mt-2">
+        <div className="flex justify-center my-4">
           {nowPlayingData.isOnline ? (
             <span className="bg-green-300 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">ONLINE</span>
           ) : (
@@ -63,9 +63,9 @@ const SpotifyContainer = () => {
         </div>
         {nowPlayingData.isOnline && <PlayingAnimation />}
         {nowPlayingData.isOnline ? (
-          <div className="max-w-sm mx-auto m-4">
+          <div className="max-w-sm mx-auto mb-2">
            <Image src={nowPlayingData.image} height={100} width={100} alt="Album Art" className="rounded-lg mb-4 mx-auto" />
-            <div className="text-center mb-4">
+            <div className="text-center ">
               <h2 className="text-sm font-semibold">{nowPlayingData.song}</h2>
               <p className="text-gray-600">
                 <a href={nowPlayingData.link} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:underline">
@@ -75,7 +75,7 @@ const SpotifyContainer = () => {
             </div>
           </div>
         ) : (
-          <p className="text-gray-600 m-4">Listenin&apos; to the voices!</p>
+          <p className="text-gray-600 mb-8">Listenin&apos; to the voices!</p>
         )}
       </div>
     </div>
