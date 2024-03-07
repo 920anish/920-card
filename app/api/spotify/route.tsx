@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server';
+export const revalidate = 0
+
 
 export async function GET() {
   try {
@@ -21,15 +23,15 @@ export async function GET() {
         },
         body: params.toString(),
       });
-
       return response.json();
+
     };
 
     const { access_token } = await getAccessToken() as { access_token: string }; 
 
     const response = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
       headers: {
-        Authorization: `Bearer ${access_token}`,
+        Authorization: `Bearer ${access_token}`
       },
     });
 
