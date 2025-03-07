@@ -1,7 +1,7 @@
 
 # Next.js Card App with Spotify Integration
 
-This is a simple Next.js application that displays a personalized card with information from the Spotify API.
+This is a simple Next.js application that displays a personalized card with information from the Spotify API
 
 ## Features
 
