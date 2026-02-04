@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Socials Card",
   description: "Nothing ever happens here.",
   keywords: ["920", "anish", "card", "site", "status"],
-  metadataBase: new URL('https://920-card.anish920.workers.dev'), 
+  metadataBase: new URL('https://card.anishmishra.com.np/'), 
   openGraph: {
     title: "Socials Card",
     description: "Nothing ever happens here.",
