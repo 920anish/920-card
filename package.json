@@ -7,10 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "pages:build": "npx @cloudflare/next-on-pages",
+    "pages:build": "npx  @opennextjs/cloudflare build",
     "pages:deploy": "npm run pages:build && wrangler pages deploy .vercel/output/static",
     "pages:dev": "npx @cloudflare/next-on-pages --experimental-minify"
-
   },
   "dependencies": {
     "next": "^16.1.6",
@@ -21,7 +20,7 @@
     "sharp": "^0.33.2"
   },
   "devDependencies": {
-    "@opennextjs/cloudflare": "^1.16.1",
+    "@opennextjs/cloudflare": "^1.16.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
